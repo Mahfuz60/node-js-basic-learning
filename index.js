@@ -24,8 +24,13 @@ fs.readFile('myFile.txt', (err, data) => {
 // console.log('Hello I am Mahfuz Alam');
 
 // EventEmitter
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
+const School = require('./school');
 
-const emitter = new EventEmitter();
-// raise an Event
-emitter.emit('bellRing');
+const school = new School();
+
+// register a listener bellRing events
+school.on('bellRing', ({ period, text }) => {
+    console.log(`We need to run  because ${period}${text}`);
+});
+school.startPeriod();
